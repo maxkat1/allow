@@ -5,8 +5,11 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/goki/gi"
 	"github.com/goki/gi/gimain"
+	"github.com/goki/gi/giv"
 	"github.com/goki/gi/oswin"
 )
 
@@ -26,8 +29,13 @@ func mainrun() {
 
 	mfr := win.SetMainFrame()
 
-	but := mfr.AddNewChild(gi.KiT_Button, "button").(*gi.Button)
-	but.SetText("Add New Child")
+	tabs := mfr.AddNewChild(giv.KiT_TabView, "tabs").(*giv.TabView)
+	tabs.Nm = "tabs"
+
+	ovwk, ovwidx := tabs.AddNewTab(gi.KiT_Frame, "Overview")
+	ovw := ovwk.(*gi.Frame)
+	ovw.Lay = gi.LayoutGrid
+	fmt.Println(ovwidx)
 
 	// main menu
 	appnm := oswin.TheApp.Name()
