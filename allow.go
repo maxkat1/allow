@@ -9,7 +9,6 @@ import (
 
 	"github.com/goki/gi"
 	"github.com/goki/gi/gimain"
-	"github.com/goki/gi/giv"
 	"github.com/goki/gi/oswin"
 )
 
@@ -29,9 +28,9 @@ func mainrun() {
 
 	mfr := win.SetMainFrame()
 
-	tabs := mfr.AddNewChild(giv.KiT_TabView, "tabs").(*giv.TabView)
+	tabs := mfr.AddNewChild(gi.KiT_TabView, "tabs").(*gi.TabView)
 	tabs.Nm = "tabs"
-
+	tabs.NewTabButton = true
 	ovwk, ovwidx := tabs.AddNewTab(gi.KiT_Frame, "Overview")
 	ovw := ovwk.(*gi.Frame)
 	ovw.Lay = gi.LayoutGrid
